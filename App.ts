@@ -63,9 +63,15 @@ class App {
     this.io.on("connection", (socket: any) => {
       console.log("a user connected");
       // let username: string;
-      socket.on("username-set", (usernameArg: string) => {
-        players.set(socket.id, usernameArg);
-        console.log(players);
+      socket.on("username-set", (usernameArg: string, cb) => {
+        if (usernameArg) players.set(socket.id, usernameArg);
+        else {
+          const username = `Guest #${
+            players.values.length + Math.random() * 1000
+          }`;
+          players.set(socket.id, username);
+          cb(username);
+        }
         // console.log(username);
       });
       socket.on("cancel-game", () => {
@@ -109,8 +115,6 @@ class App {
           players,
           players.get(socket.id) || players.get(`${socket.id}`)
         );
-        if (!players.get(socket.id))
-          players.set(socket.id, `Guest #${players.values.length}`);
         // if()
         games = games.map((gameInfoArg, i) => {
           if (gameInfoArg?.gameId === data) {
