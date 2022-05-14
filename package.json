@@ -1,0 +1,24 @@
+{
+  "name": "sps-backend",
+  "version": "1.0.0",
+  "description": "stone paper scissors backend",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "dev": "nodemon --legacy-watch --exec ts-node index.ts",
+    "build": "tsc -b"
+  },
+  "author": "Vihaan Verma",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

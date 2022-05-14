@@ -1,0 +1,29 @@
+version: '3'
+services:
+  node-app:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        NODE_ENV: development
+    ports:
+      - "5000:5000"
+    volumes:
+      - "./:/app"
+      - "/app/node_modules"
+    env_file:
+      - ./.env.development
+    command: yarn dev
+  #   depends_on:
+  #     - mongo
+  # mongo:
+  #   image: mongo
+  #   volumes:
+  #     - mongo-db:/data/db
+  #   env_file:
+  #     - ./.env.development
+  #   restart: always
+  # redis:
+  #   image: redis
+# volumes:
+#   mongo-db:
