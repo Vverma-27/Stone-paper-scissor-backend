@@ -109,6 +109,8 @@ class App {
           players,
           players.get(socket.id) || players.get(`${socket.id}`)
         );
+        if (!players.get(socket.id))
+          players.set(socket.id, `Guest #${players.values.length}`);
         // if()
         games = games.map((gameInfoArg, i) => {
           if (gameInfoArg?.gameId === data) {
