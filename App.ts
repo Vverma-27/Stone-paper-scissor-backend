@@ -205,7 +205,7 @@ class App {
     // this.app.listen(this.port, () => {
     //   console.log(`App listening on the port ${this.port}`);
     // });
-    this.server.listen(this.port, () => {
+    this.server.listen(process.env.PORT || this.port, () => {
       console.log(`App listening on the port ${this.port}`);
     });
   }
