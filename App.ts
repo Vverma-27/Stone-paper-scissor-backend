@@ -49,7 +49,7 @@ class App {
     this.server = createServer(this.app);
     this.io = require("socket.io")(this.server, {
       cors: {
-        origin: "http://localhost:3000",
+        origin: "https://meta-sps.netlify.app/",
         methods: ["GET", "POST"],
       },
     });
