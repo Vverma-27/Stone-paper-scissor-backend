@@ -66,9 +66,9 @@ class App {
       socket.on("username-set", (usernameArg: string, cb) => {
         if (usernameArg) players.set(socket.id, usernameArg);
         else {
-          const username = `Guest #${
+          const username = `Guest #${Math.floor(
             players.values.length + Math.random() * 1000
-          }`;
+          )}`;
           players.set(socket.id, username);
           cb(username);
         }
@@ -161,6 +161,7 @@ class App {
           this.io.to(gameInfo.gameId).emit("moves-selected", {
             hostMove: gameInfo.currentHostMove,
             opponentMove: gameInfo.currentOpponentMove,
+            result,
           });
           gameInfo.currentHostMove = null;
           gameInfo.currentOpponentMove = null;
